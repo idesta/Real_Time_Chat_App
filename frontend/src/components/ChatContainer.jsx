@@ -4,6 +4,7 @@ import ChatHeader from "./ChatHeader";
 import MessageInput from "./MessageInput";
 import MessageSkeleton from "./skeletons/MessageSkeleton";
 import { useAuthStore } from "../store/useAuthStore";
+import { formatMessageTime } from "../lib/utils";
 
 const ChatContainer = () => {
   const { messages, getMessages, isMessageLoading, selectedUser } =
@@ -29,7 +30,7 @@ const ChatContainer = () => {
     <div className="flex-1 flex flex-col overflow-auto">
       <ChatHeader />
 
-      {/* The Message and image container part starts here*/}
+      {/* The Message and image container --MessageSkeleton part starts here*/}
 
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((message) => (
@@ -52,7 +53,7 @@ const ChatContainer = () => {
 
             <div className="chat-header mb-1">
               <time className="text-xs opacity-50 ml-1">
-                {message.createdAt}
+                {formatMessageTime(message.createdAt)}
               </time>
             </div>
             <div className="chat-bubble flex flex-col">
@@ -69,7 +70,7 @@ const ChatContainer = () => {
         ))}
       </div>
 
-      {/* The Message and image container part ends here*/}
+      {/* The Message and image container --MessageSkeleton part ends here*/}
       <MessageInput />
     </div>
   );
