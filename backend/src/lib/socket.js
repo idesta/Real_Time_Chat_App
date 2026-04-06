@@ -1,13 +1,18 @@
+import dotenv from "dotenv";
 import { Server } from "socket.io";
 import http from "http";
 import express from "express";
+
+dotenv.config();
+const ALLOWED_ORIGIN = process.env.CLIENT_URL || "http://localhost:5173";
 
 const app = express();
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173"],
+    origin: [ALLOWED_ORIGIN],
+    credentials: true,
   },
 });
 
