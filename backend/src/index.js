@@ -12,12 +12,13 @@ dotenv.config();
 // const app = express();  Used in WebSocket
 
 const PORT = process.env.PORT;
+const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: CLIENT_URL,
     credentials: true,
   }),
 );
