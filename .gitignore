@@ -1,4 +1,3 @@
 deploy-ec2.sh
-deploy-ec2-prod.sh
 EC2DeployKey.pem
-EC2DeployKeyProd.pem
+deploy-ec2-nginx.sh
